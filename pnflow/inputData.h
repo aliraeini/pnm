@@ -2,7 +2,9 @@
 #define INPUTDATA_H
 
 #include "InputFile.h"
+#include "mstream.h"
 #include "typses.h"
+#include <set>
 
 
 typedef struct

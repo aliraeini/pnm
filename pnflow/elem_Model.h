@@ -191,7 +191,7 @@ inline double ElemModel::getConductance(const Fluid& fluid,  bool neighbourToInO
 	else
 		flowConductance = std::max(conductanceWater_.first,0.) + std::max(conductanceWater_.second,0.);
 
-	dbgAsrt(flowConductance > 1e-50);
+	dAsrt(flowConductance > 1e-50);
 	//if(flowConductance <=  1e-50 && debugLevel>500)
 	//{
 		//std::cout<<"\nError: zero flow conductance "<<"\n" ;

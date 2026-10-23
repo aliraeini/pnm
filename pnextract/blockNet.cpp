@@ -499,11 +499,11 @@ void blockNetwork::createNewThroats(medialSurface*& srf)  {
 				poreNE* p1 = poreIs[p1ID];
 				throatNE* trot = throatIs[p1->contacts[nei]];
 				if(p1ID>nei)  {
-					dbgAsrt(srf->vxl(i-1,j-1,k-1));
+					dAsrt(srf->vxl(i-1,j-1,k-1));
 					trot->toxels2.push_back( (srf->vxl(i-1,j-1,k-1)) );
 				}
 				else {
-					dbgAsrt(srf->vxl(i-1,j-1,k-1));
+					dAsrt(srf->vxl(i-1,j-1,k-1));
 					trot->toxels1.push_back( (srf->vxl(i-1,j-1,k-1)) );
 				}
 			}

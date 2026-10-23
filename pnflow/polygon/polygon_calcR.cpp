@@ -402,7 +402,7 @@ void Polygon::calcR_waterWithOilLayers(double cappPressure)
 	double watSat((area_-cornerAreaOil-layerAreaOil-cornerAreaWat) / area_);
 
 	double centerWatCond = SPConductance(area_, comn_.water().viscosity()) * watSat;
-	dbgAsrt(watSat > 0. && watSat < 1.);
+	dAsrt(watSat > 0. && watSat < 1.);
 
 	if(hasDisConectedCentreWCornerW_)
 	{

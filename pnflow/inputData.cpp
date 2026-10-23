@@ -313,7 +313,7 @@ bool InputData::fillingList(int nSkip) const
 	istringstream data;
 	if(giv("FILLING_LIST", data))  {
 		string tmp("F");
-		fori0to(nSkip+1) data>>tmp;
+		for_i_(0,nSkip+1) data>>tmp;
 		cout<< "Reading FILLING_LIST@"<<nSkip<<endl;
 		return (tmp[0] == 'T' || tmp[0] == 't');
    }

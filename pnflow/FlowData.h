@@ -6,6 +6,7 @@
 #include <stack>
 
 #include "InputFile.h"
+#include "mstream.h"
 #include "typses.h"
 #include "fluid.h"
 
@@ -118,10 +119,10 @@ class GNMData  {
 	{
 		rockTypes_.push_back(new SolidWall(inp));
 		floodingCycle_ = 0;
-		if(inp.informative) cout<<"ift:"<<watoil_.sigma()<<endl;
-		if(inp.informative) cout<<"Water,  mu:"<<water_.viscosity()*watoil_.sigma()<<" rho:"<<water_.density()*watoil_.sigma()<<" R:"<<water_.resistivity()<<" "<<endl;
-		if(inp.informative) cout<<"Oil,    mu:"<<  oil_.viscosity()*watoil_.sigma()<<" rho:"<<  oil_.density()*watoil_.sigma()<<" R:"<<  oil_.resistivity()<<" "<<endl;
-		if(inp.informative) cout<<"Clay,   R:"<<  clay_.resistivity()<<" "<<endl;
+		if(true) cout<<"ift:"<<watoil_.sigma()<<endl;
+		if(true) cout<<"Water,  mu:"<<water_.viscosity()*watoil_.sigma()<<" rho:"<<water_.density()*watoil_.sigma()<<" R:"<<water_.resistivity()<<" "<<endl;
+		if(true) cout<<"Oil,    mu:"<<  oil_.viscosity()*watoil_.sigma()<<" rho:"<<  oil_.density()*watoil_.sigma()<<" R:"<<  oil_.resistivity()<<" "<<endl;
+		if(true) cout<<"Clay,   R:"<<  clay_.resistivity()<<" "<<endl;
 	}
 
 	int  dispCycle() const {return floodingCycle_;}
@@ -151,7 +152,7 @@ class GNMData  {
 	const InputFile&	input()     const { return input_; }
 	const stvec<RockType*>& rockTypes() const { return rockTypes_; }
 	stvec<RockType*> &	   rockTypesCh()     { return rockTypes_; }
-	bool	informative()           const { return input_.informative; }
+	bool	informative()           const { return true; }
 
 	void addKcSwKrsQs(const std::array<double,8>& KcSwKrsQs)  {
 		int icy = dispCycle();

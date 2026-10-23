@@ -14,11 +14,11 @@ void getWetIndices(double& amottWat, double& amottOil, double& USBMIndx, const v
 	double amottImbib[] = {(*SwKcKrsQsss[iimbib].begin())[ISw],1., (*SwKcKrsQsss[iimbib].rbegin())[ISw]};
 	double amottDrain[] = {(*SwKcKrsQsss[idrain].begin())[ISw],0., (*SwKcKrsQsss[idrain].rbegin())[ISw]};
 
-	dbgAsrt((*SwKcKrsQsss[idrain].begin())[IPc]<0.);
-	dbgAsrt((*SwKcKrsQsss[idrain].rbegin())[IPc]>0.);
+	dAsrt((*SwKcKrsQsss[idrain].begin())[IPc]<0.);
+	dAsrt((*SwKcKrsQsss[idrain].rbegin())[IPc]>0.);
 
-	dbgAsrt((*SwKcKrsQsss[iimbib].begin())[IPc]>0.);
-	dbgAsrt((*SwKcKrsQsss[iimbib].rbegin())[IPc]<0.);
+	dAsrt((*SwKcKrsQsss[iimbib].begin())[IPc]>0.);
+	dAsrt((*SwKcKrsQsss[iimbib].rbegin())[IPc]<0.);
 
 
 	double areaDrain=0., areaImbib=0.;

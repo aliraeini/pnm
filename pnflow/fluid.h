@@ -4,6 +4,7 @@
 
 #include <string>
 #include "InputFile.h"
+#include "mstream.h"
 
 using namespace std;
 

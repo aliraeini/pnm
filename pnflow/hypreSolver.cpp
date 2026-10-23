@@ -695,7 +695,7 @@ void hypreSolver::fillMatrixHypre(HYPRE_IJMatrix AAA, HYPRE_IJVector bbb, HYPRE_
 	networkOutlets_.clear();                               // Ensure we don't have left over soliutions from before
 	networkInlets_.clear();
 	for(int pI = nBSs_; pI < nBpPors_; ++pI)  {
-		dbgAsrt(dynamic_cast<Pore*>(elemans_[pI]));
+		dAsrt(dynamic_cast<Pore*>(elemans_[pI]));
 		Pore *por = static_cast<Pore*>(elemans_[pI]);
 
 		if(por->slvrCnct(ff).isPassed())  { //&& por->isInsideSolverBox()

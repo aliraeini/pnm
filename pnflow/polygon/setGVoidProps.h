@@ -102,12 +102,12 @@ void setContactAngles(vector<VoidElem*>& pores, vector<VoidElem*>& trots, const 
 			if(comn.rand01()>0.5)
 			{
 				 trots[k]->setContactAngle(conAnglesMaped[pOne->index()], CAMdl, CAMdl2SepAng);
-				 dbgAsrt(conAnglesMaped[pOne->index()]>=0);
+				 dAsrt(conAnglesMaped[pOne->index()]>=0);
 			}
 			else
 			{
 				 trots[k]->setContactAngle(conAnglesMaped[pTwo->index()], CAMdl, CAMdl2SepAng);
-				 dbgAsrt(conAnglesMaped[pTwo->index()]>=0);
+				 dAsrt(conAnglesMaped[pTwo->index()]>=0);
 			}
 		}
 		else if(conAnglesMaped[pTwo->index()]>=0 /*clusterIndx[pTwo->index()] > 0 &&*/)
@@ -118,13 +118,13 @@ void setContactAngles(vector<VoidElem*>& pores, vector<VoidElem*>& trots, const 
 				trots[k]->setContactAngle(conAnglesMaped[pOne->index()], CAMdl, CAMdl2SepAng);
 			else
 				trots[k]->setContactAngle(comn.weibul1(wb), CAMdl, CAMdl2SepAng);
-			//dbgAsrt(conAnglesMaped[pOne->index()]>=0);
+			//dAsrt(conAnglesMaped[pOne->index()]>=0);
 		}
-		dbgAsrt(trots[k]->conAngleAdv()>0.0001);
+		dAsrt(trots[k]->conAngleAdv()>0.0001);
 //        cout<<trots[k]->conAngleAdv()<<" ";
 	}
  }
- if(comn.input().informative) cout<<"Contact Angles ["<<int(wb.minV*180/PI)<<"-"<<int((wb.minV+wb.delV)*180/PI)<<"] set for "<<pores.size()<<" pores and "<<trots.size()<<" trots. Crl:"<<wb.cor<<endl;
+ if(true) cout<<"Contact Angles ["<<int(wb.minV*180/PI)<<"-"<<int((wb.minV+wb.delV)*180/PI)<<"] set for "<<pores.size()<<" pores and "<<trots.size()<<" trots. Crl:"<<wb.cor<<endl;
 }
 
 

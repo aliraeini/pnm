@@ -37,7 +37,7 @@ results3D::results3D(const InputFile& input, const GNMData * comn, string output
 	iWrite_(0), prefix_(outputFolder), rScaleFactor_(1.)
 {
 
-	inform=input.informative;
+	inform=true;
 
 	istringstream ss;                  //!### Keyword **visualize** writes 3D visualization files
 	if(input.giv("visualize", ss)) //!##### Keyword **visualize:**  	rScaleFactor 	thetaResulution	WriteInit	WriteOInj	WriteWInj	WriteAllSteps	WriteCorners;

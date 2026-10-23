@@ -61,7 +61,7 @@ class CommonData : public GNMData
 			minEverCappPress_(0.),
 		   trappedRegionsOil_(trappedRegionsOil__),
 		   trappedRegionsWat_(trappedRegionsWat__),
-		   informative(input.informative)
+		   informative(true)
 	{
 		circWatCondMultFact_ = input.getOr("SURFACE_FILM_COND_FACT", 0.);
 		input.getOr("GRAV_CONST",dbl3(0.,0.,-9.81));

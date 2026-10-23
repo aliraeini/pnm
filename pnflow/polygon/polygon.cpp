@@ -786,7 +786,7 @@ double Triangle::snapOffPrsDrainFromCorner(bool& casePossible, int cor) const
 			errorVal = fabs((newPc - oldPc)/oldPc);
 
 			if(errorVal < EPSILON)  {
-				dbgAsrt(tetaCor >= cntAngRec_);
+				dAsrt(tetaCor >= cntAngRec_);
 				casePossible = tetaCor >= cntAngRec_;//  && oilLayer_[cor].freeAtPrs(newPc);
 
 				return newPc;

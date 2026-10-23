@@ -4,19 +4,17 @@ import os, sys;  "msRoot" in os.environ or sys.exit("Retry after `source .../src
 
 
 # pnflow does not support single-pore network
-#Paint sphere  I J K  R  InV OutV(ignored in Paint)
+#paint(sphere((I,J,K), R, InV))
 nErrs=0
 cmds=''
 with open("spack4.mhd", 'w') as f1:
-	f1.write('DimSize = 40 40 40\n')
-	f1.write('replaceRange 0 255 0\n')
-	f1.write('reset dx  1   1   1\n\n')
-
+	f1.write("DimSize = 40 40 40\nVxlPy {\n")
+	f1.write("  img.replace_range(0,255,0)\n  img.spacing = dbl3(1,1,1)\n")
 	for kk in range(0,3,1):
 		for jj in range(0,3,1):
 			for ii in range(0,3,1):
-				f1.write("Paint sphere  "+str(ii*20)+" "+str(jj*20)+" "+str(kk*20)+"     11   1\n")
-	f1.write('\nreset dx 2e-6  2e-6  2e-6\n')
+				f1.write("  img.paint(sphere(("+str(ii*20)+","+str(jj*20)+","+str(kk*20)+"), 11, 1))\n")
+	f1.write("  img.spacing = dbl3(2e-6,2e-6,2e-6)\n}\n")
 
 
 
@@ -57,8 +55,8 @@ writeStatistics T;
 
 runSh('.', "pnextract spack4.mhd");
 runSh('.', "pnflow    input_pnflow.dat");
-runSh('.', "voxelImageProcess   spack4.mhd dump_spack4.raw");
-if fileFloatDiffersFrom("voxelImageProcess.log","totalPorosity:",0.32,0.05): nErrs+=1
+runSh('.', "voxelImageProcPy spack4.mhd 'img.print_info()' dump_spack4.raw");
+if fileFloatDiffersFrom("voxelImageProcPy.log","total_porosity:",0.32,0.05): nErrs+=1
 if fileFloatDiffersFrom("pnflow.log","Absolute permeability:",1.5e-12,0.05): nErrs+=1
 
 

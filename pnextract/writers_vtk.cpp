@@ -104,13 +104,13 @@ string  vtkWriter_finish()  {
 template<typename T>
 void writeVtuArray(ofstream& outp, string name, const vector<T> & data, string typeStr="Float32")  {
 	outp<<"\t\t<DataArray type = \""<<typeStr<<"\" Name = \""<<name<<"\" format = \"ascii\">\n";
-	for_i(data)  {  outp << data[i] << _nl_;  }
+	for_(data,i)  {  outp << data[i] << _nl_;  }
 	outp<<"\t\t</DataArray>"<<endl;
 }
 
 #define writeVtu_i(outp, name, data, Expr, typeStr)  \
 	outp<<"\t\t<DataArray type = \"" typeStr "\" Name = \""<<name<<"\" format = \"ascii\">\n";  \
-	for_i(data)  {  outp << Expr << _nl_;  }  \
+	for_(data,i)  {  outp << Expr << _nl_;  }  \
 	outp<<"\n\t\t</DataArray>\n";
 
 
@@ -212,7 +212,7 @@ void vtuWriteThroats(string basNam, const vector<poreNE*>& poreIs, const vector<
 
 	outp<<"\t<Points>\n";
 	outp<<"\t\t<DataArray type = \"Float32\" NumberOfComponents = \"3\" format = \"ascii\">\n";
-	for_i(points)  {	outp << points[i]*dx+X0<< _nl_;  }
+	for_(points,i)  {	outp << points[i]*dx+X0<< _nl_;  }
 	outp<<"\n\t\t</DataArray>\n";
 	outp<<"\t</Points>\n";
 
@@ -336,7 +336,7 @@ void vtuWriteTHroatSpheres(string basNam, const vector<poreNE*>& poreIs, const v
 
 	outp<<"\t<Points>\n";
 	outp<<"\t\t<DataArray type = \"Float32\" NumberOfComponents = \"3\" format = \"ascii\">\n";
-	for_i(points)  {	outp << points[i]*dx+X0 << _nl_;  }
+	for_(points,i)  {	outp << points[i]*dx+X0 << _nl_;  }
 	outp<<"\n\t\t</DataArray>\n";
 	outp<<"\t</Points>\n";
 
@@ -381,7 +381,7 @@ void vtuWritePores(string basNam, const vector<poreNE*>& poreIs, const vector<th
 
 	outp<<"\t<Points>\n";
 	outp<<"\t\t<DataArray type = \"Float32\" NumberOfComponents = \"3\" format = \"ascii\">\n";
-	for_i(points)  {	outp << points[i]*dx+X0<< " " << _nl_;  }
+	for_(points,i)  {	outp << points[i]*dx+X0<< " " << _nl_;  }
 	outp<<"\n\t\t</DataArray>\n";
 	outp<<"\t</Points>\n";
 
@@ -463,7 +463,7 @@ void vtuWriteMbMbs(string basNam, const vector<medialBall>& ballSpace, const  ve
 
 	outp<<"\t<Points>\n";
 	outp<<"\t\t<DataArray type = \"Float32\" NumberOfComponents = \"3\" format = \"ascii\">\n";
-	for_i(points)  { outp << points[i]*dx+X0 << _nl_;  }
+	for_(points,i)  { outp << points[i]*dx+X0 << _nl_;  }
 	outp<<"\n\t\t</DataArray>\n";
 	outp<<"\t</Points>\n";
 
@@ -513,7 +513,7 @@ void vtuWriteThroatMbMbs(string basNam,      /// ********* throat *********
 
 	int E2msfc=0, E_msfd=0, E8msgl=0, Dkfhj2=0, Dkfhj1=0;
 
-	for_i(throatIs)  {  const auto& tr = *throatIs[i];
+	for_(throatIs,i)  {  const auto& tr = *throatIs[i];
 		const medialBall *mb2 = tr.mb22(),   *mb1 = tr.mb11();
 
 		if (mb1)
@@ -550,7 +550,7 @@ void vtuWriteThroatMbMbs(string basNam,      /// ********* throat *********
 
 	outp<<"\t<Points>\n";
 	outp<<"\t\t<DataArray type = \"Float32\" NumberOfComponents = \"3\" format = \"ascii\">\n";
-	for_i(points) outp << points[i]*dx+X0<< _nl_;
+	for_(points,i) outp << points[i]*dx+X0<< _nl_;
 	outp<<"\n\t\t</DataArray>\n";
 	outp<<"\t</Points>\n";
 

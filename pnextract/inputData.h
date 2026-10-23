@@ -4,6 +4,14 @@
 
 #include "InputFile.h"
 #include "voxelImage.h"
+#include "voxelImgUtils.h"
+
+// names used by the former libvoxel
+using voxelImage = VoxelImage;
+template<class T> using voxelImageT = VoxelImageT<T>;
+template<class T> using voxelField = VoxelField<T>;
+
+namespace VxlPy { void execScript(const std::string& script, VoxelImagesBase* imgPtr, const std::string& nam); }
 #include "ElementGNE.h"
 
 
@@ -137,7 +145,7 @@ public:
 
 	segValues.resize(256, _rockTypes.size());
 
-	for_i(_rockTypes)  {
+	for_(_rockTypes,i)  {
 		auto& rt=_rockTypes[i];
 		if(giv(rt.name+"_range", iss))  {
 			int lower,upper;
@@ -177,10 +185,11 @@ public:
 	//else if (dataType == "binary")  {if (!VImage.readBin(fnam))   alert("could not read binary image!",-1); }
 	//else if (dataType == "ascii")   {if (!VImage.readAscii(fnam)) alert("could not read ascii image!",-1); }
 	//else  { VImage.reset(0,0,0,255);
-	readConvertFromHeader(VImage,fnam);  //dataType="mhd"; }
+	VImage.readFromHeader(fnam);  //dataType="mhd"; }
 
-	const std::string& vxlkys=kwrd("VxlPro");
-	if(vxlkys.size())  vxlProcess(vxlkys,VImage,"GNE:VxlPro");
+	ensure(kwrd("VxlPro").empty(), "VxlPro is no longer supported, use VxlPy { python script } in the input or image header file", -1);
+	const std::string& vxlpy=kwrd("VxlPy");
+	if(vxlpy.size())  VxlPy::execScript(vxlpy, &VImage, "GNE:VxlPy");
 
 	//if(dataType=="mhd")
 	//{
@@ -256,7 +265,7 @@ public:
 
 	cout<< endl;
 	size_t nVInsids=0;
-	for_i(_rockTypes)  {
+	for_(_rockTypes,i)  {
 		nVInsids+=nVxlVs[i];
 		cout<<" "<<i<<". "<< _rockTypes[i].name<<": "<<nVxlVs[i]<<" voxels, "<< nVxlVs[i]/(double(0.01*nx)*ny*nz) << "%"<<endl;
 	}

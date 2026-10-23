@@ -219,7 +219,7 @@
 
 
 voxelImage segToVxlMesh(const medialSurface & ref)  {/// converts segments back to voxelImage
-	voxelImage vxls(ref.nx,ref.ny,ref.nz,255);
+	voxelImage vxls(int3(ref.nx,ref.ny,ref.nz),255);
 	for (int iz = 0; iz<ref.nz; ++iz)  {
 		for (int iy = 0; iy<ref.ny; ++iy)  {
 			const segments& s = ref.segs_[iz][iy];

@@ -2,7 +2,7 @@
 
 This repository includes the classical network flow simulation code called pnflow.
 [pnextract network extraction code](https://github.com/aliraeini/pnextract) is also
-included [here in pnextract folder](src/pnm/pnextract) for convenience. These two
+included [here in pnextract folder](pnextract) for convenience. These two
 codes are kept compatible and refered to as pore-network model (PNM) together.
 
 The pnflow code is essentially a cleaned up version of the [poreflow code] by
@@ -43,9 +43,9 @@ keyword and other flow parameters. Finally run, in a Windows Command Prompt:
   into the folder where the input_pnflow.dat is copied and click the `Open Command Window Here` menu.
 
 
-The instructions are similar in Linux. Additionally, you can source the src/script/bashrc file to set the paths to the compiled binaries:
+The instructions are similar in Linux. Additionally, you can source the script/bashrc file to set the paths to the compiled binaries:
 
-     source PATH/TO/src/script/bashrc
+     source PATH/TO/script/bashrc
 
 ###  Build instructions
 
@@ -78,6 +78,6 @@ or send me an email:   s.foroughi@imperial.ac.uk
 [Foroughi et al. 2021]: https://doi.org/10.1007/s11242-021-01609-y
 [Hypre]: https://github.com/LLNL/hypre
 [TOTAL]: https://www.total.com
-[pnextract]:  src/pnm/pnextract
+[pnextract]:  pnextract
 [bu20190607]:  https://github.com/aliraeini/pnflow/tree/bu20190607
 [Wintershall Dea]: https://wintershalldea.com

@@ -26,9 +26,9 @@ To open a command-prompt in Windows, hold the `Shift` key and `right-click`
 into the folder where the input file is copied and click the `Open Command Window Here` menu.
 
 
-The instructions are similar in Linux. Additionally, you can source the src/script/bashrc file to set the paths to the compiled binaries:
+The instructions are similar in Linux. Additionally, you can source the script/bashrc file to set the paths to the compiled binaries:
 
-     source PATH/TO/src/script/bashrc
+     source PATH/TO/script/bashrc
 
 See the [pnextract wiki](https://github.com/aliraeini/pnextract/wiki/pnextract-FAQ) for more details.
 
@@ -37,7 +37,7 @@ See the [pnextract wiki](https://github.com/aliraeini/pnextract/wiki/pnextract-F
 Download and extract bin.7z for pnextract.exe,
 a Win64 executable compiled using MinGW compilers.
 
-See the src/script/README.md file for build instructions.
+See the script/README.md file for build instructions.
 
 The included libvoxel  is the main dependancy.
 libvoxel itself optionally links to [libz] and [libtiff] in the
